@@ -1,0 +1,3 @@
+- op: add
+  path: /metadata/name
+  value: 10.42.5.0/24

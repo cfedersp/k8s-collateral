@@ -1,0 +1,9 @@
+bases:
+- ../../base
+patches:
+  - path: cidr.yaml
+    target:
+      group: operator.tigera.io
+      version: v1
+      kind: Installation
+      name: default
