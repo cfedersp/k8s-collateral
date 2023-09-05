@@ -1,4 +1,9 @@
 {
+   "name": "crio",
+   "type": "bridge",
+   "isGateway": true,
+   "isMasq": true,
+   "hairpinMode": true,
    "ipam":{
       "type":"host-local",
       "ranges":[
@@ -33,6 +38,6 @@
             "dst":"3ffe:ffff:0:01ff::1/64"
          }
       ],
-      "dataDir":"/run/my-orchestrator/container-ipam-state"
+"dataDir":"/run/cni-state"
    }
 }
