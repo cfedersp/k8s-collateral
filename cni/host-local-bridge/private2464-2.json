@@ -9,12 +9,12 @@
       "ranges":[
          [
             {
-               "subnet":"172.16.5.0/24"
-            }
+               "subnet":"172.16.8.0/24"
+            },
          ],
          [
             {
-               "subnet":"3ffe:ffff:0:01ff::/64"
+               "subnet":"3ffe:ffff:0:03ff::/64"
             }
          ]
       ],
@@ -26,6 +26,6 @@
             "dst":"::/128"
          }
       ],
-      "dataDir":"/run/cni-state"
+"dataDir":"/run/cni-state"
    }
 }
