@@ -13,6 +13,9 @@
             }
          ]
       ],
+      "routes": [
+	{ "dst": "10.96.0.0/20" }
+      ],
       "dataDir":"/run/cni-state"
    }
 }
