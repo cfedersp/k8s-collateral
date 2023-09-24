@@ -4,12 +4,11 @@ Description = An example of executing a script as a system service with Environm
 [Service]
 Type = oneshot
 User = root
+RemainAfterExit = no
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/k8s.sh
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/prep-config.sh admin
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/wait.sh
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/calico.sh admin
 ExecStart = /usr/bin/systemctl disable k8s-init
-StandardOutput = file:/tmp/service.log
+StandardOutput = file:/var/log/k8s-init-service.log
 
 [Install]
 WantedBy = default.target

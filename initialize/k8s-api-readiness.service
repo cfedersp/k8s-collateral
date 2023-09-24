@@ -1,0 +1,14 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+
+[Service]
+Type = oneshot
+User = root
+Requires = k8s-init.service
+After = k8s-init.service
+RemainAfterExit = no
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/wait.sh
+StandardOutput = file:/var/log/k8s-api-readiness-service.log
+
+[Install]
+WantedBy = default.target

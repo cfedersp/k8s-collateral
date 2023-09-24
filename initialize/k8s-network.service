@@ -1,0 +1,15 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+
+[Service]
+Type = oneshot
+User = root
+Requires = k8s-api-readiness.service
+After = k8s-api-readiness.service
+RemainAfterExit = no
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/calico.sh admin
+ExecStart = /usr/bin/systemctl disable k8s-network
+StandardOutput = file:/var/log/k8s-network-service.log
+
+[Install]
+WantedBy = default.target
