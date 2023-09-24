@@ -1,0 +1,15 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+
+[Service]
+Type = oneshot
+User = root
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/k8s.sh
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/prep-config.sh admin
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/wait.sh
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/calico.sh admin
+ExecStart = systemctl disable k8s-init
+StandardOutput = file:/tmp/service.log
+
+[Install]
+WantedBy = default.target
