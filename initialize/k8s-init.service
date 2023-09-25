@@ -1,12 +1,12 @@
 [Unit]
 Description = An example of executing a script as a system service with EnvironmentFile directive
+Requires = crio.service
+After = crio.service
 
 [Service]
 Type = oneshot
 User = root
 RemainAfterExit = no
-Requires = crio.service
-After = crio.service
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/k8s.sh
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/prep-config.sh admin
 ExecStart = /usr/bin/systemctl disable k8s-init
