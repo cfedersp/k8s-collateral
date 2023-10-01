@@ -7,8 +7,9 @@ After = crio.service
 Type = oneshot
 User = root
 RemainAfterExit = no
+EnvironmentFile = /etc/k8s-staging/init_env
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/k8s.sh
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/prep-config.sh admin
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/prep-config.sh admin $CONFIG_BUCKET
 ExecStart = /usr/bin/systemctl disable k8s-init
 StandardOutput = file:/var/log/k8s-init-service.log
 
