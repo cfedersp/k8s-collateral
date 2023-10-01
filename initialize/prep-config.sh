@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 NEW_CONFIG_HOME=/home/$1/.kube
 mkdir -p $NEW_CONFIG_HOME
