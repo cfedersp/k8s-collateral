@@ -1,0 +1,16 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+Requires = crio.service
+After = crio.service
+
+[Service]
+Type = oneshot
+User = root
+RemainAfterExit = no
+EnvironmentFile = /etc/k8s-staging/cloudformation/init.env
+ExecStart = /etc/k8s-staging/k8s-collateral/join/k8s-join.sh
+ExecStart = /usr/bin/systemctl disable k8s-join
+StandardOutput = file:/var/log/k8s-join-service.log
+
+[Install]
+WantedBy = default.target
