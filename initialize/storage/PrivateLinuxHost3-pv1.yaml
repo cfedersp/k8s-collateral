@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: PrivateLinuxHost2-pv1
+  name: PrivateLinuxHost3-pv1
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 spec:
@@ -21,4 +21,4 @@ spec:
         - key: node.kubernetes.io/workername
           operator: In
           values:
-          - PrivateLinuxHost2
+          - PrivateLinuxHost3
