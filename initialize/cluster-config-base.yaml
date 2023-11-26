@@ -3,4 +3,7 @@ kind: ClusterConfiguration
 criSocket: "unix:///var/run/crio/crio.sock"
 serviceSubnet: "10.96.0.0/20"
 podSubnet: "10.45.0.0/16"
+apiServer:
+  certSANs:
+  - "127.0.0.1"
   
