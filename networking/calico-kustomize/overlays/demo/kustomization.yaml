@@ -1,0 +1,9 @@
+resources:
+- ../../base
+patches:
+  - path: cidr.yaml
+    target:
+      group: apps
+      version: v1
+      kind: DaemonSet
+      name: calico-node

@@ -9,15 +9,15 @@
       "ranges":[
          [
             {
-               "subnet":"10.45.2.0/24"
-            },
+               "subnet":"10.45.3.0/24"
+            }
          ]
       ],
-      "routes":[
+      "routes": [
          {
             "dst":"0.0.0.0/0"
          }
       ],
-"dataDir":"/run/cni-state"
+      "dataDir":"/run/cni-state"
    }
 }
