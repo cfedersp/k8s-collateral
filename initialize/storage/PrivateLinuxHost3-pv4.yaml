@@ -16,7 +16,7 @@ spec:
     required:
       nodeSelectorTerms:
       - matchExpressions:
-        - key: node-restriction.kubernetes.io/workername
+        - key: name
           operator: In
           values:
           - privatelinuxhost3
