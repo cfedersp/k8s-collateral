@@ -8,10 +8,10 @@ Type = oneshot
 User = root
 RemainAfterExit = no
 EnvironmentFile = /etc/k8s-staging/init.env
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 40Gi /dev/sdf $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdg $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdh $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdi $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 40Gi /dev/sdf local-storage $LOGICAL_HOST_NAME | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdg local-storage $LOGICAL_HOST_NAME | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdh local-storage $LOGICAL_HOST_NAME | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdi local-storage $LOGICAL_HOST_NAME | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
 ExecStart = /usr/bin/systemctl disable k8s-storage
 StandardOutput = file:/var/log/k8s-storage-service.log
 

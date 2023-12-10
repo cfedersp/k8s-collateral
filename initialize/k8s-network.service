@@ -7,7 +7,6 @@ After = k8s-api-readiness.service
 Type = oneshot
 User = root
 RemainAfterExit = no
-ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /etc/k8s-staging/k8s-collateral/initialize/storage/
 ExecStart = /etc/k8s-staging/k8s-collateral/initialize/calico.sh admin
 ExecStart = /usr/bin/systemctl disable k8s-network
 StandardOutput = file:/var/log/k8s-network-service.log
