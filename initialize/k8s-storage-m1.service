@@ -1,0 +1,20 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+Requires = k8s-kubelet.service
+After = k8s-kubelet.service
+
+[Service]
+Type = oneshot
+User = root
+RemainAfterExit = no
+EnvironmentFile = /etc/k8s-staging/init.env
+ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /etc/k8s-staging/k8s-collateral/initialize/storage/local-sc.yaml
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 40Gi /dev/sdf $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdg $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdh $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdi $LOGICAL_HOST_NAME local-storage | /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f -
+ExecStart = /usr/bin/systemctl disable k8s-storage
+StandardOutput = file:/var/log/k8s-storage-service.log
+
+[Install]
+WantedBy = default.target
