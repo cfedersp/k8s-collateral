@@ -7,13 +7,9 @@ After = k8s-kubelet.service
 Type = oneshot
 User = root
 RemainAfterExit = no
+WorkingDirectory=/
 EnvironmentFile = /etc/k8s-staging/init.env
-ExecStart = mkdir /etc/k8s-staging/storage/
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 40Gi /dev/sdf local-storage $LOGICAL_HOST_NAME-pv1 > /etc/k8s-staging/storage/$LOGICAL_HOST_NAME-pv1.yaml
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdg local-storage $LOGICAL_HOST_NAME-pv2 > /etc/k8s-staging/storage/$LOGICAL_HOST_NAME-pv2.yaml
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdh local-storage $LOGICAL_HOST_NAME-pv3 > /etc/k8s-staging/storage/$LOGICAL_HOST_NAME-pv3.yaml
-ExecStart = /etc/k8s-staging/k8s-collateral/initialize/storage/gen-pv-yaml.sh 100Gi /dev/sdi local-storage $LOGICAL_HOST_NAME-pv4 > /etc/k8s-staging/storage/$LOGICAL_HOST_NAME-pv4.yaml
-ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /etc/k8s-staging/storage/
+ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/kubelet.conf apply -f /etc/k8s-staging/storage/
 ExecStart = /usr/bin/systemctl disable k8s-storage
 StandardOutput = file:/var/log/k8s-storage-service.log
 
