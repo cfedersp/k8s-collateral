@@ -27,4 +27,4 @@ spec:
         - key: name
           operator: In
           values:
-            $HOSTNAME
+            - $HOSTNAME
