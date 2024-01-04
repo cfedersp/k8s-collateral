@@ -9,6 +9,7 @@ User = root
 RemainAfterExit = no
 WorkingDirectory=/
 EnvironmentFile = /etc/k8s-staging/init.env
+ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/kubelet.conf label nodes $NODE_NAME ingress=$INTERNET_INGRESS
 ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/kubelet.conf apply -f /etc/k8s-staging/storage/
 ExecStart = /usr/bin/systemctl disable k8s-storage
 StandardOutput = file:/var/log/k8s-storage-service.log
