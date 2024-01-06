@@ -23,3 +23,9 @@ patches:
     kind: StatefulSet
     namespace: myns
     name: myapp
+
+
+    Volume Provisioner 
+    +
+    volume attach/detach controller
+    replaced with Cloud/Storage Vendor-speciic CSI Plugins

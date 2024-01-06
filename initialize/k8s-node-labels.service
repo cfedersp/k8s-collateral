@@ -1,0 +1,17 @@
+[Unit]
+Description = An example of executing a script as a system service with EnvironmentFile directive
+Requires = k8s-kubelet.service
+After = k8s-kubelet.service
+
+[Service]
+Type = oneshot
+User = root
+RemainAfterExit = no
+WorkingDirectory=/
+EnvironmentFile = /etc/k8s-staging/init.env
+ExecStart = /usr/bin/kubectl --kubeconfig /etc/kubernetes/kubelet.conf label nodes ${NODE_NAME} ingress=${INTERNET_INGRESS}
+ExecStart = /usr/bin/systemctl disable k8s-node-labels
+StandardOutput = file:/var/log/k8s-node-labels.log
+
+[Install]
+WantedBy = default.target
